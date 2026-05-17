@@ -9,8 +9,44 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as OtimistasRouteImport } from './routes/otimistas'
+import { Route as FundifyRouteImport } from './routes/fundify'
+import { Route as EpsRouteImport } from './routes/eps'
+import { Route as CertisafeRouteImport } from './routes/certisafe'
+import { Route as CatalizaRouteImport } from './routes/cataliza'
+import { Route as R3sMarketingRouteImport } from './routes/3s-marketing'
 import { Route as IndexRouteImport } from './routes/index'
 
+const OtimistasRoute = OtimistasRouteImport.update({
+  id: '/otimistas',
+  path: '/otimistas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FundifyRoute = FundifyRouteImport.update({
+  id: '/fundify',
+  path: '/fundify',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EpsRoute = EpsRouteImport.update({
+  id: '/eps',
+  path: '/eps',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CertisafeRoute = CertisafeRouteImport.update({
+  id: '/certisafe',
+  path: '/certisafe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CatalizaRoute = CatalizaRouteImport.update({
+  id: '/cataliza',
+  path: '/cataliza',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R3sMarketingRoute = R3sMarketingRouteImport.update({
+  id: '/3s-marketing',
+  path: '/3s-marketing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +55,116 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/3s-marketing': typeof R3sMarketingRoute
+  '/cataliza': typeof CatalizaRoute
+  '/certisafe': typeof CertisafeRoute
+  '/eps': typeof EpsRoute
+  '/fundify': typeof FundifyRoute
+  '/otimistas': typeof OtimistasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/3s-marketing': typeof R3sMarketingRoute
+  '/cataliza': typeof CatalizaRoute
+  '/certisafe': typeof CertisafeRoute
+  '/eps': typeof EpsRoute
+  '/fundify': typeof FundifyRoute
+  '/otimistas': typeof OtimistasRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/3s-marketing': typeof R3sMarketingRoute
+  '/cataliza': typeof CatalizaRoute
+  '/certisafe': typeof CertisafeRoute
+  '/eps': typeof EpsRoute
+  '/fundify': typeof FundifyRoute
+  '/otimistas': typeof OtimistasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/3s-marketing'
+    | '/cataliza'
+    | '/certisafe'
+    | '/eps'
+    | '/fundify'
+    | '/otimistas'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/3s-marketing'
+    | '/cataliza'
+    | '/certisafe'
+    | '/eps'
+    | '/fundify'
+    | '/otimistas'
+  id:
+    | '__root__'
+    | '/'
+    | '/3s-marketing'
+    | '/cataliza'
+    | '/certisafe'
+    | '/eps'
+    | '/fundify'
+    | '/otimistas'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  R3sMarketingRoute: typeof R3sMarketingRoute
+  CatalizaRoute: typeof CatalizaRoute
+  CertisafeRoute: typeof CertisafeRoute
+  EpsRoute: typeof EpsRoute
+  FundifyRoute: typeof FundifyRoute
+  OtimistasRoute: typeof OtimistasRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/otimistas': {
+      id: '/otimistas'
+      path: '/otimistas'
+      fullPath: '/otimistas'
+      preLoaderRoute: typeof OtimistasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fundify': {
+      id: '/fundify'
+      path: '/fundify'
+      fullPath: '/fundify'
+      preLoaderRoute: typeof FundifyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/eps': {
+      id: '/eps'
+      path: '/eps'
+      fullPath: '/eps'
+      preLoaderRoute: typeof EpsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/certisafe': {
+      id: '/certisafe'
+      path: '/certisafe'
+      fullPath: '/certisafe'
+      preLoaderRoute: typeof CertisafeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cataliza': {
+      id: '/cataliza'
+      path: '/cataliza'
+      fullPath: '/cataliza'
+      preLoaderRoute: typeof CatalizaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/3s-marketing': {
+      id: '/3s-marketing'
+      path: '/3s-marketing'
+      fullPath: '/3s-marketing'
+      preLoaderRoute: typeof R3sMarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +177,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  R3sMarketingRoute: R3sMarketingRoute,
+  CatalizaRoute: CatalizaRoute,
+  CertisafeRoute: CertisafeRoute,
+  EpsRoute: EpsRoute,
+  FundifyRoute: FundifyRoute,
+  OtimistasRoute: OtimistasRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
