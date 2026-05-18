@@ -63,7 +63,9 @@ export function UnitPage(p: UnitPageProps) {
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-muted-foreground">{p.description}</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#cta" className="btn-primary">Falar com a equipe <ArrowRight className="h-4 w-4" /></a>
+              <LeadFormDialog source={p.logoAlt}>
+                <button className="btn-primary">Falar com um especialista <ArrowRight className="h-4 w-4" /></button>
+              </LeadFormDialog>
               <a href="#servicos" className="btn-ghost">Conhecer a atuação</a>
             </div>
 
@@ -151,10 +153,11 @@ export function UnitPage(p: UnitPageProps) {
             <h2 className="relative text-[clamp(1.6rem,3vw,2.4rem)] font-bold max-w-2xl">{p.ctaTitle}</h2>
             <p className="relative mt-4 max-w-2xl text-white/85">{p.ctaBody}</p>
             <div className="relative mt-8">
-              <a href="mailto:contato@ciprianoayala.com.br"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-ink hover:bg-white/90">
-                Fale com a equipe <ArrowRight className="h-4 w-4" />
-              </a>
+              <LeadFormDialog source={p.logoAlt}>
+                <button className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-ink hover:bg-white/90">
+                  Falar com a equipe <ArrowRight className="h-4 w-4" />
+                </button>
+              </LeadFormDialog>
             </div>
           </div>
         </section>
