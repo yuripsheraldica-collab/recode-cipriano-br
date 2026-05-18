@@ -1,5 +1,6 @@
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import { LeadFormDialog } from "@/components/site/LeadFormDialog";
 import { ArrowRight, Check } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
