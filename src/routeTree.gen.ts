@@ -14,6 +14,7 @@ import { Route as FundifyRouteImport } from './routes/fundify'
 import { Route as EpsRouteImport } from './routes/eps'
 import { Route as CertisafeRouteImport } from './routes/certisafe'
 import { Route as CatalizaRouteImport } from './routes/cataliza'
+import { Route as AreaClienteRouteImport } from './routes/area-cliente'
 import { Route as R3sMarketingRouteImport } from './routes/3s-marketing'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -42,6 +43,11 @@ const CatalizaRoute = CatalizaRouteImport.update({
   path: '/cataliza',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AreaClienteRoute = AreaClienteRouteImport.update({
+  id: '/area-cliente',
+  path: '/area-cliente',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R3sMarketingRoute = R3sMarketingRouteImport.update({
   id: '/3s-marketing',
   path: '/3s-marketing',
@@ -56,6 +62,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/3s-marketing': typeof R3sMarketingRoute
+  '/area-cliente': typeof AreaClienteRoute
   '/cataliza': typeof CatalizaRoute
   '/certisafe': typeof CertisafeRoute
   '/eps': typeof EpsRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/3s-marketing': typeof R3sMarketingRoute
+  '/area-cliente': typeof AreaClienteRoute
   '/cataliza': typeof CatalizaRoute
   '/certisafe': typeof CertisafeRoute
   '/eps': typeof EpsRoute
@@ -75,6 +83,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/3s-marketing': typeof R3sMarketingRoute
+  '/area-cliente': typeof AreaClienteRoute
   '/cataliza': typeof CatalizaRoute
   '/certisafe': typeof CertisafeRoute
   '/eps': typeof EpsRoute
@@ -86,6 +95,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/3s-marketing'
+    | '/area-cliente'
     | '/cataliza'
     | '/certisafe'
     | '/eps'
@@ -95,6 +105,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/3s-marketing'
+    | '/area-cliente'
     | '/cataliza'
     | '/certisafe'
     | '/eps'
@@ -104,6 +115,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/3s-marketing'
+    | '/area-cliente'
     | '/cataliza'
     | '/certisafe'
     | '/eps'
@@ -114,6 +126,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   R3sMarketingRoute: typeof R3sMarketingRoute
+  AreaClienteRoute: typeof AreaClienteRoute
   CatalizaRoute: typeof CatalizaRoute
   CertisafeRoute: typeof CertisafeRoute
   EpsRoute: typeof EpsRoute
@@ -158,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CatalizaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/area-cliente': {
+      id: '/area-cliente'
+      path: '/area-cliente'
+      fullPath: '/area-cliente'
+      preLoaderRoute: typeof AreaClienteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/3s-marketing': {
       id: '/3s-marketing'
       path: '/3s-marketing'
@@ -178,6 +198,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R3sMarketingRoute: R3sMarketingRoute,
+  AreaClienteRoute: AreaClienteRoute,
   CatalizaRoute: CatalizaRoute,
   CertisafeRoute: CertisafeRoute,
   EpsRoute: EpsRoute,
@@ -187,3 +208,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
