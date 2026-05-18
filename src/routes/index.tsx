@@ -385,9 +385,11 @@ function Home() {
             <p className="relative mt-4 max-w-2xl text-white/85">
               Fale com nossos especialistas e descubra como podemos gerar mais impacto e resultados.
             </p>
-            <a href="mailto:contato@ciprianoayala.com.br" className="relative mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-ink hover:bg-white/90">
-              Fale com um especialista <ArrowRight className="h-4 w-4" />
-            </a>
+            <LeadFormDialog source="CTA final">
+              <button className="relative mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-ink hover:bg-white/90">
+                Falar com um especialista <ArrowRight className="h-4 w-4" />
+              </button>
+            </LeadFormDialog>
           </div>
         </section>
       </main>
