@@ -2,7 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { SouthAmericaMap } from "@/components/site/SouthAmericaMap";
-import { ArrowRight, Sparkles, ShieldCheck, BarChart3, Lock, HeartHandshake } from "lucide-react";
+import { VideoTestimonials, TransformationStories } from "@/components/site/VideoTestimonials";
+import { LeadFormDialog } from "@/components/site/LeadFormDialog";
+import { ArrowRight, Sparkles, ShieldCheck, BarChart3, Lock, HeartHandshake, Headphones, Zap } from "lucide-react";
 import heroTeam from "@/assets/hero-team.jpg";
 import founder from "@/assets/founder.png";
 
@@ -66,8 +68,10 @@ function Home() {
                 Inteligência fiscal, captação, ESG e tecnologia em um só lugar.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a href="#solucoes" className="btn-primary">Conheça nossas soluções <ArrowRight className="h-4 w-4" /></a>
-                <a href="#contato" className="btn-ghost">Área do Cliente</a>
+                <LeadFormDialog source="Hero">
+                  <button className="btn-primary">Falar com um especialista <ArrowRight className="h-4 w-4" /></button>
+                </LeadFormDialog>
+                <Link to="/area-cliente" className="btn-ghost">Área do Cliente</Link>
               </div>
             </div>
 
@@ -111,7 +115,7 @@ function Home() {
             {units.map((u) => (
               <Link
                 key={u.slug}
-                to={u.slug}
+                to={u.slug as "/eps"}
                 className="card-soft p-7 flex flex-col gap-5 group transition-all hover:-translate-y-1 hover:shadow-elegant"
               >
                 <div className="h-12 flex items-center">
@@ -120,7 +124,7 @@ function Home() {
                 <h3 className="text-lg font-semibold text-ink">{u.name}</h3>
                 <p className="text-sm text-muted-foreground flex-1">{u.desc}</p>
                 <span className="text-sm font-semibold text-brand inline-flex items-center gap-1">
-                  Saiba mais <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  Acessar página <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </span>
               </Link>
             ))}
@@ -255,35 +259,104 @@ function Home() {
           </div>
         </section>
 
-        {/* CLIENT AREA */}
-        <section className="container-x py-20">
-          <div className="rounded-3xl card-soft p-8 md:p-12 grid gap-10 lg:grid-cols-2 lg:items-center">
-            <div>
-              <span className="pill">Área do cliente</span>
-              <h2 className="mt-4 text-[clamp(1.7rem,2.6vw,2.2rem)] font-bold text-ink">
-                Tudo o que você precisa, em um só lugar.
-              </h2>
-              <p className="mt-4 text-muted-foreground">
-                Sua área exclusiva com documentos, contratos, relatórios e atendimento prioritário.
-              </p>
-              <ul className="mt-5 space-y-2 text-ink">
-                <li className="flex items-center gap-3"><Lock className="h-4 w-4 text-brand"/> Acesso seguro</li>
-                <li className="flex items-center gap-3"><HeartHandshake className="h-4 w-4 text-brand"/> Suporte dedicado</li>
-                <li className="flex items-center gap-3"><Sparkles className="h-4 w-4 text-brand"/> Agilidade nos processos</li>
-              </ul>
-              <a href="#contato" className="btn-primary mt-6">Acessar minha área <ArrowRight className="h-4 w-4"/></a>
+        {/* CLIENT AREA — two cards as per design */}
+        <section className="container-x py-20 grid gap-6 lg:grid-cols-2">
+          <div className="card-soft p-8 md:p-10 flex flex-col">
+            <div className="text-xs font-semibold tracking-[0.2em] text-brand uppercase flex items-center gap-3">
+              <span className="h-[2px] w-8 bg-brand" /> Tecnologia e transparência
             </div>
-            <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-brand/20 via-brand/5 to-accent grid place-items-center">
-              <div className="text-center px-6">
-                <div className="mx-auto h-16 w-16 rounded-2xl bg-white grid place-items-center shadow-lg ring-1 ring-border">
-                  <Lock className="h-7 w-7 text-brand" />
-                </div>
-                <div className="mt-4 font-semibold text-ink">Portal seguro 24/7</div>
-                <div className="mt-1 text-sm text-muted-foreground">Documentos, contratos e relatórios</div>
+            <h2 className="mt-5 text-[clamp(1.5rem,2.2vw,1.9rem)] font-bold text-ink leading-tight">
+              Dashboard inteligente para <span className="text-brand">decisões estratégicas</span>.
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Acompanhe indicadores, projetos, captações e resultados em tempo real com
+              nossa plataforma exclusiva.
+            </p>
+            <ul className="mt-5 space-y-2.5 text-ink">
+              {[
+                { i: BarChart3, t: "Relatórios personalizados" },
+                { i: Sparkles, t: "Indicadores de impacto" },
+                { i: HeartHandshake, t: "Gestão de projetos" },
+                { i: ShieldCheck, t: "Segurança e compliance" },
+              ].map(({ i: Icon, t }) => (
+                <li key={t} className="flex items-center gap-3 text-sm">
+                  <span className="grid h-6 w-6 place-items-center rounded-full bg-brand/10">
+                    <Icon className="h-3.5 w-3.5 text-brand" />
+                  </span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6 rounded-2xl overflow-hidden ring-1 ring-border bg-gradient-to-br from-brand/10 to-transparent p-4">
+              <div className="aspect-[16/9] rounded-xl bg-white grid place-items-center text-xs text-muted-foreground">
+                Preview do dashboard
               </div>
             </div>
+            <Link to="/area-cliente" className="btn-ghost mt-6 self-start">
+              Saiba mais <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="card-soft p-8 md:p-10 flex flex-col">
+            <div className="text-xs font-semibold tracking-[0.2em] text-brand uppercase flex items-center gap-3">
+              <span className="h-[2px] w-8 bg-brand" /> Área do cliente
+            </div>
+            <h2 className="mt-5 text-[clamp(1.5rem,2.2vw,1.9rem)] font-bold text-ink leading-tight">
+              Tudo o que você precisa, <span className="text-brand">em um só lugar</span>.
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Sua área exclusiva com documentos, contratos, relatórios e atendimento
+              prioritário.
+            </p>
+            <ul className="mt-5 space-y-2.5 text-ink">
+              {[
+                { i: Lock, t: "Acesso seguro" },
+                { i: Headphones, t: "Suporte dedicado" },
+                { i: Zap, t: "Agilidade nos processos" },
+              ].map(({ i: Icon, t }) => (
+                <li key={t} className="flex items-center gap-3 text-sm">
+                  <span className="grid h-6 w-6 place-items-center rounded-full bg-brand/10">
+                    <Icon className="h-3.5 w-3.5 text-brand" />
+                  </span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6 rounded-2xl overflow-hidden ring-1 ring-border bg-gradient-to-br from-brand/15 to-accent aspect-[16/9] grid place-items-center">
+              <div className="text-center">
+                <div className="mx-auto h-14 w-14 rounded-2xl bg-white grid place-items-center shadow-lg ring-1 ring-border">
+                  <Lock className="h-6 w-6 text-brand" />
+                </div>
+                <div className="mt-3 text-sm font-semibold text-ink">Portal seguro 24/7</div>
+              </div>
+            </div>
+            <Link to="/area-cliente" className="btn-primary mt-6 self-start">
+              Acessar minha área <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </section>
+
+        {/* Mid-page CTA */}
+        <section className="container-x py-6">
+          <div className="card-soft p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+            style={{ background: "linear-gradient(120deg, color-mix(in oklab, var(--brand) 8%, white), white)" }}>
+            <div>
+              <div className="pill">Fale agora</div>
+              <h3 className="mt-3 text-2xl font-bold text-ink">
+                Pronto para transformar a gestão da sua instituição?
+              </h3>
+              <p className="mt-2 text-muted-foreground max-w-xl">
+                Nosso time responde direto pelo WhatsApp após o preenchimento do formulário.
+              </p>
+            </div>
+            <LeadFormDialog source="CTA meio">
+              <button className="btn-primary shrink-0">Falar com um especialista <ArrowRight className="h-4 w-4" /></button>
+            </LeadFormDialog>
+          </div>
+        </section>
+
+        <VideoTestimonials />
+        <TransformationStories />
 
         {/* INTERNATIONALIZATION — South America focused */}
         <section className="container-x py-20">
