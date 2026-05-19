@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Grupo Cipriano Ayala" },
+      { name: "description", content: "Cipriano Reworked is a professional website showcasing Cipriano Ayala's group of companies and their achievements." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Grupo Cipriano Ayala" },
+      { property: "og:description", content: "Cipriano Reworked is a professional website showcasing Cipriano Ayala's group of companies and their achievements." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Grupo Cipriano Ayala" },
+      { name: "twitter:description", content: "Cipriano Reworked is a professional website showcasing Cipriano Ayala's group of companies and their achievements." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d02dff2c-24e0-44d6-99cf-0657b7b660df/id-preview-3c73ee58--356539d4-f7ff-4f37-840c-f28c327b83a8.lovable.app-1779108662162.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d02dff2c-24e0-44d6-99cf-0657b7b660df/id-preview-3c73ee58--356539d4-f7ff-4f37-840c-f28c327b83a8.lovable.app-1779108662162.png" },
     ],
     links: [
       {
