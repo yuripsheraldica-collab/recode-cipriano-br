@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import logoGca from "@/assets/logo-gca.png";
-import { LeadFormDialog } from "@/components/site/LeadFormDialog";
 
 export function Header() {
   return (
@@ -16,13 +15,10 @@ export function Header() {
           <a href="/#grupo" className="hover:text-ink transition-colors">O Grupo</a>
           <a href="/#unidades" className="hover:text-ink transition-colors">Unidades</a>
           <a href="/#resultados" className="hover:text-ink transition-colors">Resultados</a>
-          <Link to="/area-cliente" className="hover:text-ink transition-colors">Área do Cliente</Link>
         </nav>
-        <LeadFormDialog source="Header">
-          <button className="btn-primary">
-            Falar com especialista <ArrowRight className="h-4 w-4" />
-          </button>
-        </LeadFormDialog>
+        <Link to="/area-cliente" className="btn-primary">
+          Área do Cliente <ArrowRight className="h-4 w-4" />
+        </Link>
       </div>
     </header>
   );
