@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
-import { SouthAmericaMap } from "@/components/site/SouthAmericaMap";
+
 import { VideoTestimonials, TransformationStories } from "@/components/site/VideoTestimonials";
 import { LeadFormDialog } from "@/components/site/LeadFormDialog";
 import { ArrowRight, Sparkles, ShieldCheck, BarChart3, Lock, HeartHandshake, Headphones, Zap } from "lucide-react";
@@ -71,7 +71,7 @@ function Home() {
                 <LeadFormDialog source="Hero">
                   <button className="btn-primary">Falar com um especialista <ArrowRight className="h-4 w-4" /></button>
                 </LeadFormDialog>
-                <Link to="/area-cliente" className="btn-ghost">Área do Cliente</Link>
+                <a href="#unidades" className="btn-ghost">Conheça nossas soluções</a>
               </div>
             </div>
 
@@ -360,18 +360,17 @@ function Home() {
 
         {/* INTERNATIONALIZATION — South America focused */}
         <section className="container-x py-20">
-          <div className="max-w-2xl">
+          <div className="max-w-3xl">
             <span className="pill">Atuação regional</span>
             <h2 className="mt-4 text-[clamp(1.9rem,3vw,2.6rem)] font-bold text-ink leading-tight">
               Da nossa sede no Brasil para toda a América do Sul.
             </h2>
             <p className="mt-5 text-muted-foreground text-lg">
-              Atuamos em parceria com organizações da região, com foco no Mercosul, para ampliar oportunidades,
-              compartilhar conhecimento e gerar impacto regional a partir do Brasil.
+              Com sede no Brasil e foco no Mercosul, atuamos em parceria com organizações da
+              região para ampliar oportunidades, compartilhar conhecimento e gerar impacto
+              regional. Brasil, Argentina, Uruguai, Paraguai e Bolívia — uma rede integrada
+              de instituições transformando a gestão pública e o terceiro setor na América do Sul.
             </p>
-          </div>
-          <div className="mt-10">
-            <SouthAmericaMap />
           </div>
         </section>
 
