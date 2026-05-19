@@ -287,9 +287,36 @@ function Home() {
                 </li>
               ))}
             </ul>
-            <div className="mt-6 rounded-2xl overflow-hidden ring-1 ring-border bg-gradient-to-br from-brand/10 to-transparent p-4">
-              <div className="aspect-[16/9] rounded-xl bg-white grid place-items-center text-xs text-muted-foreground">
-                Preview do dashboard
+            <div className="mt-6 rounded-2xl overflow-hidden ring-1 ring-border bg-gradient-to-br from-brand/10 via-white to-brand/5 p-5">
+              <div className="rounded-xl bg-white shadow-sm ring-1 ring-border overflow-hidden">
+                <div className="flex items-center gap-1.5 px-3 py-2 border-b border-border bg-accent/40">
+                  <span className="h-2 w-2 rounded-full bg-destructive/60" />
+                  <span className="h-2 w-2 rounded-full bg-yellow-400/70" />
+                  <span className="h-2 w-2 rounded-full bg-emerald-500/70" />
+                  <span className="ml-2 text-[10px] text-muted-foreground">GCA · Painel</span>
+                </div>
+                <div className="p-4 grid grid-cols-3 gap-2">
+                  {[["R$ 218M", "Captado"], ["184", "Projetos"], ["99%", "Aderência"]].map(([v, l]) => (
+                    <div key={l} className="rounded-lg bg-accent/50 p-2.5">
+                      <div className="text-[9px] uppercase tracking-wide text-muted-foreground">{l}</div>
+                      <div className="mt-0.5 text-sm font-bold text-ink">{v}</div>
+                    </div>
+                  ))}
+                </div>
+                <div className="px-4 pb-4">
+                  <svg viewBox="0 0 400 100" className="w-full h-20">
+                    <defs>
+                      <linearGradient id="dashGrad" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0%" stopColor="oklch(0.62 0.2 250)" stopOpacity="0.35" />
+                        <stop offset="100%" stopColor="oklch(0.62 0.2 250)" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+                    <polyline fill="url(#dashGrad)" stroke="none"
+                      points="0,80 40,65 80,72 120,50 160,58 200,38 240,46 280,24 320,32 360,16 400,22 400,100 0,100" />
+                    <polyline fill="none" stroke="oklch(0.55 0.22 252)" strokeWidth="2"
+                      points="0,80 40,65 80,72 120,50 160,58 200,38 240,46 280,24 320,32 360,16 400,22" />
+                  </svg>
+                </div>
               </div>
             </div>
             <Link to="/area-cliente" className="btn-ghost mt-6 self-start">
@@ -322,12 +349,31 @@ function Home() {
                 </li>
               ))}
             </ul>
-            <div className="mt-6 rounded-2xl overflow-hidden ring-1 ring-border bg-gradient-to-br from-brand/15 to-accent aspect-[16/9] grid place-items-center">
-              <div className="text-center">
-                <div className="mx-auto h-14 w-14 rounded-2xl bg-white grid place-items-center shadow-lg ring-1 ring-border">
-                  <Lock className="h-6 w-6 text-brand" />
+            <div className="mt-6 rounded-2xl overflow-hidden ring-1 ring-border bg-gradient-to-br from-brand/15 via-white to-accent p-5">
+              <div className="rounded-xl bg-white shadow-sm ring-1 ring-border p-5 space-y-3">
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-full bg-gradient-to-br from-brand to-brand/60 grid place-items-center text-white font-bold text-sm">CA</div>
+                  <div className="flex-1">
+                    <div className="h-2 w-24 bg-ink/15 rounded-full" />
+                    <div className="mt-1.5 h-1.5 w-16 bg-ink/10 rounded-full" />
+                  </div>
+                  <Lock className="h-4 w-4 text-brand" />
                 </div>
-                <div className="mt-3 text-sm font-semibold text-ink">Portal seguro 24/7</div>
+                {[
+                  { label: "Contrato 2026", v: 80 },
+                  { label: "Relatório mensal", v: 60 },
+                  { label: "Projeto Santa Casa", v: 95 },
+                ].map((d) => (
+                  <div key={d.label} className="rounded-lg bg-accent/40 px-3 py-2">
+                    <div className="flex items-center justify-between text-[11px]">
+                      <span className="font-semibold text-ink">{d.label}</span>
+                      <span className="text-muted-foreground">{d.v}%</span>
+                    </div>
+                    <div className="mt-1.5 h-1.5 bg-ink/10 rounded-full overflow-hidden">
+                      <div className="h-full bg-brand rounded-full" style={{ width: `${d.v}%` }} />
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
             <Link to="/area-cliente" className="btn-primary mt-6 self-start">
