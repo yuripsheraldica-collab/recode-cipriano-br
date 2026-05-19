@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { WhatsAppFloat } from "@/components/site/WhatsAppFloat";
 
 function NotFoundComponent() {
   return (
@@ -86,10 +87,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d02dff2c-24e0-44d6-99cf-0657b7b660df/id-preview-3c73ee58--356539d4-f7ff-4f37-840c-f28c327b83a8.lovable.app-1779108662162.png" },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "apple-touch-icon", href: "/favicon.png" },
     ],
   }),
   shellComponent: RootShell,
@@ -118,6 +118,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <Outlet />
+      <WhatsAppFloat />
     </QueryClientProvider>
   );
 }
